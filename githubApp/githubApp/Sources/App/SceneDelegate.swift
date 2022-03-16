@@ -53,7 +53,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // 깃헙 로그인으로 부터 받은 code 파싱
             let code = url.absoluteString.components(separatedBy: "code=").last ?? ""
             // AccessToken, userInfo 서버에서 가져오기
-            AuthManager.shared.getAccessTokenAndUserInfo(code: code)
+            AuthService.shared.getAccessTokenAndUserInfo(code: code)
          }
      }
 }

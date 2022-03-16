@@ -19,9 +19,9 @@
 		A1BE9CCD271095A000D57453 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE9CCC271095A000D57453 /* SearchViewController.swift */; };
 		A1BE9CCF271095AC00D57453 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE9CCE271095AC00D57453 /* ProfileViewController.swift */; };
 		A1BE9CD52711623100D57453 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE9CD42711623100D57453 /* BaseViewController.swift */; };
-		A1BE9CDB27116AEF00D57453 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE9CDA27116AEF00D57453 /* AuthManager.swift */; };
+		A1BE9CDB27116AEF00D57453 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE9CDA27116AEF00D57453 /* AuthService.swift */; };
 		A1BE9CDD27119A1D00D57453 /* AccessTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE9CDC27119A1D00D57453 /* AccessTokenResponse.swift */; };
-		A1BE9CE22711CE1A00D57453 /* GithubApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE9CE12711CE1A00D57453 /* GithubApiManager.swift */; };
+		A1BE9CE22711CE1A00D57453 /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE9CE12711CE1A00D57453 /* GithubService.swift */; };
 		A1BE9CE427129A5600D57453 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE9CE327129A5600D57453 /* User.swift */; };
 		A1BE9CE627129B9400D57453 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE9CE527129B9400D57453 /* Repository.swift */; };
 		A1BE9CE92712C1A800D57453 /* RepoSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE9CE82712C1A800D57453 /* RepoSearchResponse.swift */; };
@@ -59,9 +59,9 @@
 		A1BE9CCC271095A000D57453 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A1BE9CCE271095AC00D57453 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A1BE9CD42711623100D57453 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		A1BE9CDA27116AEF00D57453 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		A1BE9CDA27116AEF00D57453 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A1BE9CDC27119A1D00D57453 /* AccessTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenResponse.swift; sourceTree = "<group>"; };
-		A1BE9CE12711CE1A00D57453 /* GithubApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubApiManager.swift; sourceTree = "<group>"; };
+		A1BE9CE12711CE1A00D57453 /* GithubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
 		A1BE9CE327129A5600D57453 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A1BE9CE527129B9400D57453 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		A1BE9CE82712C1A800D57453 /* RepoSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSearchResponse.swift; sourceTree = "<group>"; };
@@ -163,13 +163,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A1BE9CDE2711AD4200D57453 /* Managers */ = {
+		A1BE9CDE2711AD4200D57453 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A1BE9CDA27116AEF00D57453 /* AuthManager.swift */,
-				A1BE9CE12711CE1A00D57453 /* GithubApiManager.swift */,
+				A1BE9CDA27116AEF00D57453 /* AuthService.swift */,
+				A1BE9CE12711CE1A00D57453 /* GithubService.swift */,
 			);
-			path = Managers;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		A1BE9CEE2713C39900D57453 /* ViewControllers */ = {
@@ -208,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				A1CB1F8827E2298F006489FA /* App */,
-				A1BE9CDE2711AD4200D57453 /* Managers */,
+				A1BE9CDE2711AD4200D57453 /* Services */,
 				A1BE9CEE2713C39900D57453 /* ViewControllers */,
 				A1BE9CC92710923400D57453 /* Views */,
 				A1BE9CC82710922E00D57453 /* ViewModels */,
@@ -386,11 +386,11 @@
 				A1BE9CF02713C3FB00D57453 /* ProfileHeaderView.swift in Sources */,
 				A1BE9CB8271018D200D57453 /* IntroViewController.swift in Sources */,
 				A1BE9CE627129B9400D57453 /* Repository.swift in Sources */,
-				A1BE9CE22711CE1A00D57453 /* GithubApiManager.swift in Sources */,
+				A1BE9CE22711CE1A00D57453 /* GithubService.swift in Sources */,
 				A1BE9CDD27119A1D00D57453 /* AccessTokenResponse.swift in Sources */,
 				A1BE9D502715E98500D57453 /* RepositoryDetailViewModel.swift in Sources */,
 				A1BE9CCB271094C000D57453 /* MainTabViewController.swift in Sources */,
-				A1BE9CDB27116AEF00D57453 /* AuthManager.swift in Sources */,
+				A1BE9CDB27116AEF00D57453 /* AuthService.swift in Sources */,
 				A1925486271552C70051D7BB /* RepositoryViewModel.swift in Sources */,
 				A1BE9CF42714520A00D57453 /* RepositoryDetailViewController.swift in Sources */,
 				A1BE9CE427129A5600D57453 /* User.swift in Sources */,

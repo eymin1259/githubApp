@@ -19,11 +19,11 @@ class RepositoryViewModel {
     
     //MARK: methods
     func login() {
-        AuthManager.shared.getUserCode()
+        AuthService.shared.getUserCode()
     }
     
     func logout(){
-        AuthManager.shared.removeAccessToken()
+        AuthService.shared.removeAccessToken()
     }
     
     func clearRepositories() {
@@ -57,7 +57,7 @@ class RepositoryViewModel {
         currentPage += 1    // page 수 증가
         
         // repo search api 호출
-        GithubApiManager.shared.searchRepositories(query: self.query, page: currentPage)
+        GithubService.shared.searchRepositories(query: self.query, page: currentPage)
             .subscribe(onNext: { [weak self] response in
                 // response : repo search 검색결과
                 let items = response.items
@@ -107,7 +107,7 @@ class RepositoryViewModel {
         currentPage += 1    // page 수 증가
         
         
-        GithubApiManager.shared.getMyRepositories(page: currentPage)
+        GithubService.shared.getMyRepositories(page: currentPage)
             .subscribe(onNext: { [weak self] myRepos in
                 // myRepos 서버에서 받은 나의 레포지토리 정보
                 if let currentSection = try? self?.repositoriesSubect.value(), let currentRepos = currentSection.first?.items {
@@ -137,7 +137,7 @@ class RepositoryViewModel {
     }
     
     func getOwnerInfo() -> User? {
-        guard let userDictionary = UserDefaults.standard.object(forKey: AuthManager.USER_INFO_KEY) as? [String:String] else {return nil}
+        guard let userDictionary = UserDefaults.standard.object(forKey: AuthService.USER_INFO_KEY) as? [String:String] else {return nil}
         let id = userDictionary["id"] ?? "0"
         let login = userDictionary["login"] ?? ""
         let avatar_url = userDictionary["avatar_url"] ?? ""

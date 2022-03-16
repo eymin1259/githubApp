@@ -31,7 +31,7 @@ class RepositoryDetailViewModel {
     //MARK: methods
     // fullname을 가진 repository detail 정보 가져오기
     func getRepositoryDetail() {
-        GithubApiManager.shared.getRepositoryDetail(repoFullName: fullName)
+        GithubService.shared.getRepositoryDetail(repoFullName: fullName)
             .subscribe(onNext: { [weak self] repoDetail in
                 self?.nameSuject.on(.next(repoDetail.name))
                 self?.descriptionSuject.on(.next(repoDetail.description ?? ""))
@@ -47,7 +47,7 @@ class RepositoryDetailViewModel {
     
     // 내가 star체크한 레포지토리인지 여부 검사
     func checkIsStarredRepository()  {
-        GithubApiManager.shared.checkIsStarredRepository(repoFullName: self.fullName)
+        GithubService.shared.checkIsStarredRepository(repoFullName: self.fullName)
             .subscribe(onNext: { [weak self] isStarred in
                 if isStarred == true {
                     self?.starSubject.on(.next(true))
@@ -66,7 +66,7 @@ class RepositoryDetailViewModel {
             // 현재 star 상태이면
             if currentStarred == true {
                 // unstar 수행
-                GithubApiManager.shared.unStarRepository(repoFullName: self?.fullName ?? "")
+                GithubService.shared.unStarRepository(repoFullName: self?.fullName ?? "")
                     .subscribe(onNext: { starred in
                         let currentStar = try? self?.starCountSuject.value()
                         let newStar = (currentStar ?? 0) - 1
@@ -79,7 +79,7 @@ class RepositoryDetailViewModel {
             // 현재 unstar 상태이면
             else {
                 // star 수행
-                GithubApiManager.shared.starRepository(repoFullName: self?.fullName ?? "")
+                GithubService.shared.starRepository(repoFullName: self?.fullName ?? "")
                     .subscribe(onNext: {starred in
                         let currentStar = try? self?.starCountSuject.value()
                         let newStar = (currentStar ?? 0) + 1

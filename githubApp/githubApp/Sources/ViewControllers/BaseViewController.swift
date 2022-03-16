@@ -52,7 +52,7 @@ class BaseViewController: UIViewController {
     //MARK: Auth methods
     func isLoggedIn() -> Bool {
         // 토큰 저장여부를 통해 로그인 상태 여부 함수
-        if let _ = UserDefaults.standard.object(forKey: AuthManager.ACCESS_TOKEN_KEY) as? String {
+        if let _ = UserDefaults.standard.object(forKey: AuthService.ACCESS_TOKEN_KEY) as? String {
             return true // 로그인 상태
         }
         else {
@@ -62,9 +62,9 @@ class BaseViewController: UIViewController {
     
     func setupNotiObserver() {
         // 깃헙로그인으로부터 돌아왔을때 발생하는 로그인 성공 notification observer
-        NotificationCenter.default.addObserver(self, selector: #selector(handleDidSaveAccessToken), name: NSNotification.Name(rawValue: AuthManager.SUCCESS_GET_TOKEN_USER_INFO), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDidSaveAccessToken), name: NSNotification.Name(rawValue: AuthService.SUCCESS_GET_TOKEN_USER_INFO), object: nil)
         // 깃헙로그인으로부터 돌아왔을때 발생하는 로그인 실패 notification observer
-        NotificationCenter.default.addObserver(self, selector: #selector(handleFailSaveAccessToken), name: NSNotification.Name(rawValue: AuthManager.FAIL_GET_TOKEN_USER_INFO), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleFailSaveAccessToken), name: NSNotification.Name(rawValue: AuthService.FAIL_GET_TOKEN_USER_INFO), object: nil)
     }
     
     func setupAuthButton(){

@@ -1,5 +1,5 @@
 //
-//  AuthManager.swift
+//  AuthService.swift
 //  githubApp
 //
 //  Created by yongmin lee on 10/9/21.
@@ -9,10 +9,10 @@ import UIKit
 import Alamofire
 import RxSwift
 
-class AuthManager {
+class AuthService {
     
     //MARK: properties
-    static let shared = AuthManager()
+    static let shared = AuthService()
     static let SUCCESS_GET_TOKEN_USER_INFO = "SUCCESS_GET_TOKEN_USER_INFO"
     static let FAIL_GET_TOKEN_USER_INFO = "FAIL_GET_TOKEN_USER_INFO"
     static let ACCESS_TOKEN_KEY = "ACCESS_TOKEN_KEY"
@@ -80,7 +80,7 @@ class AuthManager {
                     self.saveAccessToken(token: accessToken)    // token 저장
                     self.saveUserInfo(user: userInfo)           // userinfo 저장
                     // 로그인이 완료 되었음을 notification post
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AuthManager.SUCCESS_GET_TOKEN_USER_INFO) , object: nil, userInfo: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AuthService.SUCCESS_GET_TOKEN_USER_INFO) , object: nil, userInfo: nil)
                 }
                 catch {
                     self.failGetTokenAndUserInfo()
@@ -100,24 +100,24 @@ class AuthManager {
             "following" : "\(user.following ?? 0)"
         ]
         // save UserInfo
-        UserDefaults.standard.setValue(userDictionary, forKey: AuthManager.USER_INFO_KEY)
+        UserDefaults.standard.setValue(userDictionary, forKey: AuthService.USER_INFO_KEY)
         UserDefaults.standard.synchronize()
     }
     
     func saveAccessToken(token : String){
         // save AccessToken
-        UserDefaults.standard.setValue(token, forKey: AuthManager.ACCESS_TOKEN_KEY)
+        UserDefaults.standard.setValue(token, forKey: AuthService.ACCESS_TOKEN_KEY)
         UserDefaults.standard.synchronize()
     }
     
     func failGetTokenAndUserInfo(){
         // // 로그인 실패 notification post
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AuthManager.FAIL_GET_TOKEN_USER_INFO) , object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AuthService.FAIL_GET_TOKEN_USER_INFO) , object: nil, userInfo: nil)
     }
     
     func removeAccessToken() {
         // UserDefaults의 유저정보 삭제
-        UserDefaults.standard.removeObject(forKey: AuthManager.ACCESS_TOKEN_KEY)
-        UserDefaults.standard.removeObject(forKey: AuthManager.USER_INFO_KEY)
+        UserDefaults.standard.removeObject(forKey: AuthService.ACCESS_TOKEN_KEY)
+        UserDefaults.standard.removeObject(forKey: AuthService.USER_INFO_KEY)
     }
 }

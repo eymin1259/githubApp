@@ -1,5 +1,5 @@
 //
-//  GithubApiManager.swift
+//  GithubService.swift
 //  githubApp
 //
 //  Created by yongmin lee on 10/9/21.
@@ -14,16 +14,16 @@ struct NoResultError : Error {
     var errorDescription : String
 }
 
-class GithubApiManager {
+class GithubService {
     
     //MARK: properties
-    static let shared = GithubApiManager()
+    static let shared = GithubService()
     
     //MARK: mehtods
     // accessToken으로 헤더설정
     func setHeader() -> HTTPHeaders {
         var accessToken = ""
-        if let token = UserDefaults.standard.object(forKey: AuthManager.ACCESS_TOKEN_KEY) as? String {
+        if let token = UserDefaults.standard.object(forKey: AuthService.ACCESS_TOKEN_KEY) as? String {
             accessToken = token
         }
         let header : HTTPHeaders = [
