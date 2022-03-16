@@ -17,8 +17,8 @@ class AuthService {
     static let FAIL_GET_TOKEN_USER_INFO = "FAIL_GET_TOKEN_USER_INFO"
     static let ACCESS_TOKEN_KEY = "ACCESS_TOKEN_KEY"
     static let USER_INFO_KEY = "USER_INFO_KEY"
-    private let clientId = "2c18bf941e6ce4b8b346"
-    private let clientSecret = "1d4505b44ede04d75f1398b17bef569ed69ede83"
+    private let clientId = "9a7db04c7cc087570876"
+    private let clientSecret = "7347197360af119cf2914a5869b696c636d65a6d"
     
     //MARK: methods
     func getUserCode() {
