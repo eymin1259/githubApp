@@ -124,11 +124,17 @@ class SearchViewController: BaseViewController {
             .zip(tableView.rx.itemSelected, tableView.rx.modelSelected(Repository.self))
             .bind { [weak self] indexPath, model in
                 self?.tableView.deselectRow(at: indexPath, animated: true)
-                self?.tableView.isHidden = true
-                // Repository Detail 보여주기
-                let detailViewController = RepositoryDetailViewController()
-                detailViewController.repoDetailViewModel = RepositoryDetailViewModel(fullName: model.full_name)
-                self?.navigationController?.pushViewController(detailViewController, animated: true)
+                if let logged = self?.isLoggedIn(),
+                   logged == true {
+                    self?.tableView.isHidden = true
+                    // Repository Detail 보여주기
+                    let detailViewController = RepositoryDetailViewController()
+                    detailViewController.repoDetailViewModel = RepositoryDetailViewModel(fullName: model.full_name)
+                    self?.navigationController?.pushViewController(detailViewController, animated: true)
+                }
+                else {
+                    self?.showErrorToastMessage(message: "로그인이 되어있지 않습니다!")
+                }
             }
             .disposed(by: disposeBag)
         
