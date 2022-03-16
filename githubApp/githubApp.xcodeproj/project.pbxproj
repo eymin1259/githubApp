@@ -126,17 +126,9 @@
 		A1BE9CB2271018D200D57453 /* githubApp */ = {
 			isa = PBXGroup;
 			children = (
-				A1BE9CDE2711AD4200D57453 /* Managers */,
-				A1BE9CEE2713C39900D57453 /* ViewControllers */,
-				A1BE9CC92710923400D57453 /* Views */,
-				A1BE9CC82710922E00D57453 /* ViewModels */,
-				A1BE9CC72710922300D57453 /* Models */,
-				A1BE9CB3271018D200D57453 /* AppDelegate.swift */,
-				A1BE9CB5271018D200D57453 /* SceneDelegate.swift */,
-				A1BE9CB9271018D200D57453 /* Main.storyboard */,
-				A1BE9CBC271018D500D57453 /* Assets.xcassets */,
-				A1BE9CBE271018D500D57453 /* LaunchScreen.storyboard */,
 				A1BE9CC1271018D500D57453 /* Info.plist */,
+				A1CB1F8627E2295C006489FA /* Resources */,
+				A1CB1F8727E22968006489FA /* Sources */,
 			);
 			path = githubApp;
 			sourceTree = "<group>";
@@ -200,6 +192,38 @@
 				A1BE9D492715BB4F00D57453 /* Info.plist */,
 			);
 			path = githubAppTests;
+			sourceTree = "<group>";
+		};
+		A1CB1F8627E2295C006489FA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A1BE9CBC271018D500D57453 /* Assets.xcassets */,
+				A1BE9CBE271018D500D57453 /* LaunchScreen.storyboard */,
+				A1BE9CB9271018D200D57453 /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A1CB1F8727E22968006489FA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A1CB1F8827E2298F006489FA /* App */,
+				A1BE9CDE2711AD4200D57453 /* Managers */,
+				A1BE9CEE2713C39900D57453 /* ViewControllers */,
+				A1BE9CC92710923400D57453 /* Views */,
+				A1BE9CC82710922E00D57453 /* ViewModels */,
+				A1BE9CC72710922300D57453 /* Models */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A1CB1F8827E2298F006489FA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A1BE9CB3271018D200D57453 /* AppDelegate.swift */,
+				A1BE9CB5271018D200D57453 /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		CD0FEC5DA17B27E48113C331 /* Pods */ = {
