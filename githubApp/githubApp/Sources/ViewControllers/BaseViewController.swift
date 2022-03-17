@@ -8,11 +8,15 @@
 import UIKit
 import JGProgressHUD
 import Loaf
+import Swinject
 
 class BaseViewController: UIViewController {
     
     //MARK: properties
     var isShowingMessage = false
+    var DIContainer : Container {
+        return (UIApplication.shared.delegate as! AppDelegate).container
+    }
     
     //MARK: UI
     var hud = JGProgressHUD(style: .dark)

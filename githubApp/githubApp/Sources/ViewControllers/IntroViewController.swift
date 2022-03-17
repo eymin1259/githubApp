@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IntroViewController: UIViewController {
+class IntroViewController: BaseViewController {
 
     //MARK: UI
     var logoImageView = UIImageView()   // 로고 이미지뷰
@@ -40,8 +40,8 @@ class IntroViewController: UIViewController {
     
     // MainTabViewController 이동
     func goMainTabViewController() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let controller = MainTabViewController()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+            let controller = self.DIContainer.resolve(MainTabViewController.self)!
             controller.modalPresentationStyle = .fullScreen
             controller.modalTransitionStyle = .crossDissolve
             self.present(controller, animated: true, completion: nil)

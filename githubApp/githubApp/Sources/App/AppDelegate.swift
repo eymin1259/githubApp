@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import Swinject
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    let container = Container()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        registerViewModel()
+        registerViewController()
+        
         return true
     }
 
@@ -34,3 +38,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+//MARK: Dependency injection
+extension AppDelegate {
+    func registerViewModel() {
+         container.register(RepositoryViewModel.self) { r in RepositoryViewModel()}
+         container.register(RepositoryDetailViewModel.self) { (r:Resolver, fullName: String)  in
+             RepositoryDetailViewModel(fullName: fullName)
+         }
+     }
+     
+     func registerViewController() {
+         container.register(MainTabViewController.self) { r in MainTabViewController() }
+         container.register(SearchViewController.self) { r in
+             let vc = SearchViewController()
+             vc.searchViewModel = r.resolve(RepositoryViewModel.self)
+             return vc
+         }
+         container.register(ProfileViewController.self) { r in
+             let vc = ProfileViewController()
+             vc.profileViewModel = r.resolve(RepositoryViewModel.self)
+             return vc
+         }
+         container.register(RepositoryDetailViewController.self) { (r:Resolver, fullName:String) in
+             let vc = RepositoryDetailViewController()
+             vc.repoDetailViewModel = r.resolve(RepositoryDetailViewModel.self, argument: fullName)
+             return vc
+         }
+     }
+}

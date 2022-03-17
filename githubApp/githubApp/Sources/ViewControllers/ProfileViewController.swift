@@ -13,7 +13,7 @@ import RxDataSources
 class ProfileViewController: BaseViewController {
     
     //MARK: properties
-    let profileViewModel = RepositoryViewModel()
+    var profileViewModel : RepositoryViewModel!
     var disposeBag = DisposeBag()
     
     //MARK: UI
@@ -166,9 +166,8 @@ class ProfileViewController: BaseViewController {
                 self?.tableView.deselectRow(at: indexPath, animated: true)
                 self?.tableView.isHidden = true
                 // Repository Detail 보여주기
-                let detailViewController = RepositoryDetailViewController()
-                detailViewController.repoDetailViewModel = RepositoryDetailViewModel(fullName: model.full_name)
-                self?.navigationController?.pushViewController(detailViewController, animated: true)
+                let detailViewController = self?.DIContainer.resolve(RepositoryDetailViewController.self, argument: model.full_name)
+                self?.navigationController?.pushViewController(detailViewController!, animated: true)
             }
             .disposed(by: disposeBag)
         

@@ -175,8 +175,8 @@
 		A1BE9CEE2713C39900D57453 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A1BE9CB7271018D200D57453 /* IntroViewController.swift */,
 				A1BE9CD42711623100D57453 /* BaseViewController.swift */,
+				A1BE9CB7271018D200D57453 /* IntroViewController.swift */,
 				A1BE9CCA271094C000D57453 /* MainTabViewController.swift */,
 				A1BE9CCC271095A000D57453 /* SearchViewController.swift */,
 				A1BE9CCE271095AC00D57453 /* ProfileViewController.swift */,

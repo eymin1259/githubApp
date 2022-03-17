@@ -13,7 +13,7 @@ import RxDataSources
 class SearchViewController: BaseViewController {
 
     //MARK: properties
-    let searchViewModel = RepositoryViewModel()
+    var searchViewModel : RepositoryViewModel!
     var tableViewDataSource : RxTableViewSectionedReloadDataSource<RepositorySectionModel>!
     var disposeBag = DisposeBag()
     
@@ -128,9 +128,10 @@ class SearchViewController: BaseViewController {
                    logged == true {
                     self?.tableView.isHidden = true
                     // Repository Detail 보여주기
-                    let detailViewController = RepositoryDetailViewController()
-                    detailViewController.repoDetailViewModel = RepositoryDetailViewModel(fullName: model.full_name)
-                    self?.navigationController?.pushViewController(detailViewController, animated: true)
+//                    let detailViewController = RepositoryDetailViewController()
+//                    detailViewController.repoDetailViewModel = RepositoryDetailViewModel(fullName: model.full_name)
+                    let detailViewController = self?.DIContainer.resolve(RepositoryDetailViewController.self, argument: model.full_name)
+                    self?.navigationController?.pushViewController(detailViewController!, animated: true)
                 }
                 else {
                     self?.showErrorToastMessage(message: "로그인이 되어있지 않습니다!")
