@@ -1,4 +1,4 @@
-# githubSearch
+# githubApp
 
 ## 환경 및 라이브러리
 MVVM, Rxswift, RxCocoa, RxDataSources, Autolayout, JGProgressHUD, Alamofire, SDWebImage, Loaf
