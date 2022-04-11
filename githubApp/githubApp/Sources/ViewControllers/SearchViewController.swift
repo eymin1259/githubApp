@@ -128,8 +128,6 @@ class SearchViewController: BaseViewController {
                    logged == true {
                     self?.tableView.isHidden = true
                     // Repository Detail 보여주기
-//                    let detailViewController = RepositoryDetailViewController()
-//                    detailViewController.repoDetailViewModel = RepositoryDetailViewModel(fullName: model.full_name)
                     let detailViewController = self?.DIContainer.resolve(RepositoryDetailViewController.self, argument: model.full_name)
                     self?.navigationController?.pushViewController(detailViewController!, animated: true)
                 }
@@ -152,7 +150,6 @@ class SearchViewController: BaseViewController {
                 guard let framHeight = self?.tableView.frame.height else {return}
                 let isBottom = offsetY >=  contentHeight - framHeight - 180
                 if isBottom && self?.searchViewModel.isSearching == false && self?.searchViewModel.isEnd == false { // 하단까지 스크롤 했다면
-                    self?.showLoading()
                     // 무한 스크롤
                     self?.searchViewModel.searchRepository(scrolled: true)
                 }
